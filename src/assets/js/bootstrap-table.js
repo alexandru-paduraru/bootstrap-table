@@ -904,7 +904,7 @@
         }
 
         // showColumns, showToggle, showRefresh
-        html = [sprintf('<div class="columns columns-%s btn-group pull-%s">',
+        html = [sprintf('<div class="columns columns-%s pull-%s">',
             this.options.buttonsAlign, this.options.buttonsAlign)];
 
         if (typeof this.options.icons === 'string') {

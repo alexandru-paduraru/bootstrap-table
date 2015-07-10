@@ -1,0 +1,88 @@
+.fresh-table{
+    background-color: $white-color;
+    border-radius: $border-radius-extreme;
+    
+    .fixed-table-toolbar{
+        background-color: $info-color;
+        border-radius: $border-radius-extreme $border-radius-extreme 0 0;
+        
+        .pull-right{
+            .btn{
+                margin-right: 5px;
+            }    
+        }
+        
+        .pull-left{
+            .btn{
+                margin-left: 5px;
+            }
+        }
+    
+        .columns label{
+            color: $black-color;    
+        }   
+         
+        &:after{
+            display: table;
+            content: "";
+            clear: both;
+        }
+    }
+    
+    &[class*="color-"]{
+        .fixed-table-toolbar{
+            background-color: transparent;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            color: $white-color;
+        } 
+        .fixed-table-header,
+        .fixed-table-body{
+            color: $white-color;
+        }
+        
+        a{
+            color: $light-white;
+            
+            &:hover,
+            &:focus{
+                color: $white-color;
+            }
+        }    
+        .table-hover > tbody > tr:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .table > thead > tr > th, 
+        .table > tbody > tr > th, 
+        .table > tfoot > tr > th, 
+        .table > thead > tr > td, 
+        .table > tbody > tr > td, 
+        .table > tfoot > tr > td{
+            border-color: rgba(255,255,255, .15);
+        }
+    }
+    
+    .fixed-table-container{
+        border: none;
+    }
+    
+    &.color-blue{
+        @include card-radial-gradient ($icon-blue-color-top, $icon-blue-color-bottom);         
+    }
+    
+    &.color-azure{
+        @include card-radial-gradient ($icon-azure-color-top, $icon-azure-color-bottom);
+    }
+    
+    &.color-green{
+        @include card-radial-gradient ($icon-green-color-top, $icon-green-color-bottom);
+    }
+    &.color-orange{
+        @include card-radial-gradient ($icon-orange-color-top, $icon-orange-color-bottom);
+    }
+    &.color-red{
+        @include card-radial-gradient ($icon-red-color-top, $icon-red-color-bottom);
+    }
+   
+}

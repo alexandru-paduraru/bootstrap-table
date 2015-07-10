@@ -15,6 +15,7 @@ $border-thick:               2px !default;
 
 $white-color:                #FFFFFF !default;
 $white-bg:                   #FFFFFF !default;
+$white-states-color:         #FFFFFF !default;
 
 $smoke-bg:                   #F5F5F5 !default;
 
@@ -59,6 +60,7 @@ $danger-states-color:        #EE2D20 !default;
 $link-disabled-color:        #666666 !default;
 
 
+$light-white:                rgba($white-color, .8);
 $light-blue:                 rgba($primary-color, .2);
 $light-azure:                rgba($info-color, .2);
 $light-green:                rgba($success-color, .2);
@@ -142,7 +144,7 @@ $general-transition-time:  300ms !default;
 $slow-transition-time:           370ms !default; 
 $dropdown-coordinates:      29px -50px !default;
 
-$fast-transition-time:           150ms !default;
+$fast-transition-time:           100ms !default;
 $select-coordinates:         50% -40px !default;
 
 $transition-linear:                                   linear !default;

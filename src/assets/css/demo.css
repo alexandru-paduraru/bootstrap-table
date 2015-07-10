@@ -1,0 +1,24 @@
+body{
+    background-color: #e5e5e5;
+}
+
+.fresh-table{
+    margin-top: 15%;
+}
+
+.full-screen-table .fresh-table{
+    margin-top: 0;
+}
+.full-screen-table .col-md-offset-2{
+    margin: 0;
+}
+.full-screen-table .fresh-table .bootstrap-table{
+    border-radius: 0;
+}
+.full-screen-table .container{
+    width: 100%;
+}
+.full-screen-table .col-md-8{
+    width: 100%;
+    padding: 0;
+}

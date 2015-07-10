@@ -3,7 +3,6 @@
     border-radius: $border-radius-extreme;
     
     .fixed-table-toolbar{
-        background-color: $info-color;
         border-radius: $border-radius-extreme $border-radius-extreme 0 0;
         
         .pull-right{
@@ -31,7 +30,7 @@
     
     &[class*="color-"]{
         .fixed-table-toolbar{
-            background-color: transparent;
+            background: none !important;
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,.15);
             color: $white-color;
@@ -60,6 +59,10 @@
         .table > tbody > tr > td, 
         .table > tfoot > tr > td{
             border-color: rgba(255,255,255, .15);
+        };
+        
+        .btn{
+             @include btn-styles($light-white, $white-states-color);
         }
     }
     
@@ -84,5 +87,65 @@
     &.color-red{
         @include card-radial-gradient ($icon-red-color-top, $icon-red-color-bottom);
     }
-   
 }
+
+.table{
+   > thead > tr > th{
+       border-bottom-width: 1px;
+       font-size: 12px;
+       font-weight: $font-weight-bold;
+       text-transform: uppercase;
+   }  
+   
+   .radio,
+   .checkbox{
+       margin-top: 0;
+       margin-bottom: 0;
+       padding: 0;
+       width: 15px;
+   }
+   > thead > tr > th,
+   > tbody > tr > th,
+   > tfoot > tr > th,
+   > thead > tr > td,
+   > tbody > tr > td,
+   > tfoot > tr > td{
+       padding: 12px 8px;
+       vertical-align: middle;
+   }
+
+   .th-description{
+       max-width: 150px;
+   }
+   .td-price{
+       font-size: 26px;
+       font-weight: $font-weight-light;
+       margin-top: 5px;
+       text-align: right;
+   }
+   .td-total{
+        font-weight: $font-weight-bold;
+        font-size: $font-size-h5;
+        padding-top: 20px;
+        text-align: right;
+    }
+    
+   .td-actions .btn{
+        @include opacity(0.36);
+    
+        &.btn-xs{
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+    }
+    
+    > tbody > tr{
+        position: relative;
+        
+        &:hover{
+            .td-actions .btn{
+                @include opacity(1);
+            }
+        }
+    }
+} 

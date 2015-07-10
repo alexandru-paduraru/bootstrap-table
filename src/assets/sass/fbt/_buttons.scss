@@ -7,7 +7,7 @@
     @include opacity(.7);
     padding: $padding-base-vertical $padding-base-horizontal;
     
-    @include btn-styles($light-white, $white-states-color);
+    @include btn-styles($default-color, $default-states-color);
     
     &:hover,
     &:focus{

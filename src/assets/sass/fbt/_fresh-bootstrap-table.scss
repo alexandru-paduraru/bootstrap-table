@@ -1,11 +1,15 @@
 .fresh-table{
     background-color: $white-color;
     border-radius: $border-radius-extreme;
+    color: $black-font;
     
     .fixed-table-toolbar{
         border-radius: $border-radius-extreme $border-radius-extreme 0 0;
+        border-bottom: 1px solid $light-gray;
+        padding: 5px 10px;
+        color: $black-font;
         
-        .pull-right{
+       .pull-right{
             .btn{
                 margin-right: 5px;
             }    
@@ -28,11 +32,39 @@
         }
     }
     
+    .fixed-table-pagination{
+        margin: 0 10px;
+        padding: 5px 0;
+        
+        &:after{
+            display: table;
+            content: "";
+            clear: both;
+        }
+    }
+    
+    .bootstrap-table .table tbody > tr > td:first-child,{
+        padding-left: 18px !important;
+    }
+    
+    .bootstrap-table .table thead > tr > th:first-child{
+        padding-left: 10px !important;
+    }
+    .table > thead > tr > th, 
+    .table > tbody > tr > th, 
+    .table > tfoot > tr > th{
+        border-color: $light-gray;
+    } 
+    .table > thead > tr > td, 
+    .table > tbody > tr > td, 
+    .table > tfoot > tr > td{
+        border: none;
+    };
+    
     &[class*="color-"]{
         .fixed-table-toolbar{
             background: none !important;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,.15);
+            border-color: rgba(255,255,255,.15);
             color: $white-color;
         } 
         .fixed-table-header,
@@ -49,25 +81,74 @@
             }
         }    
         .table-hover > tbody > tr:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, .20);
         }
-        
-        .table > thead > tr > th, 
-        .table > tbody > tr > th, 
-        .table > tfoot > tr > th, 
-        .table > thead > tr > td, 
-        .table > tbody > tr > td, 
-        .table > tfoot > tr > td{
-            border-color: rgba(255,255,255, .15);
-        };
         
         .btn{
              @include btn-styles($light-white, $white-states-color);
         }
+        
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, .15);
+            
+            &:hover{
+                background-color: rgba(255,255,255,.25);
+            }
+        }
+        .table > thead > tr > th, 
+        .table > tbody > tr > th, 
+        .table > tfoot > tr > th{
+            border-color: rgba(255,255,255, .15);
+        } 
+        
+        .fixed-table-pagination{
+            .page-list{
+                color: $white-color;
+            }
+        }
+        
+        .form-control{
+            border-color: $light-white;
+            background-color: transparent;
+            color: $white-color;
+            
+            &:focus{
+                border-color: $white-color;
+                background-color: rgba(255,255,255,.15);
+            }
+            
+            &::-moz-placeholder{
+               @include placeholder($light-white,1);
+            }
+            &:-moz-placeholder{
+               @include placeholder($light-white,1);
+            }  
+            &::-webkit-input-placeholder{
+               @include placeholder($light-white,1); 
+            } 
+            &:-ms-input-placeholder{
+               @include placeholder($light-white,1);
+            }
+    
+                    
+        }
+        
     }
     
     .fixed-table-container{
         border: none;
+        
+        thead th{
+            border-left: 0;
+            
+            .th-inner{
+                padding: 20px 8px 0;
+            }
+        }
+        
+        tbody td{
+            border-left: 0;
+        }
     }
     
     &.color-blue{
@@ -87,65 +168,76 @@
     &.color-red{
         @include card-radial-gradient ($icon-red-color-top, $icon-red-color-bottom);
     }
-}
 
-.table{
-   > thead > tr > th{
-       border-bottom-width: 1px;
-       font-size: 12px;
-       font-weight: $font-weight-bold;
-       text-transform: uppercase;
-   }  
-   
-   .radio,
-   .checkbox{
-       margin-top: 0;
-       margin-bottom: 0;
-       padding: 0;
-       width: 15px;
-   }
-   > thead > tr > th,
-   > tbody > tr > th,
-   > tfoot > tr > th,
-   > thead > tr > td,
-   > tbody > tr > td,
-   > tfoot > tr > td{
-       padding: 12px 8px;
-       vertical-align: middle;
-   }
-
-   .th-description{
-       max-width: 150px;
-   }
-   .td-price{
-       font-size: 26px;
-       font-weight: $font-weight-light;
-       margin-top: 5px;
-       text-align: right;
-   }
-   .td-total{
-        font-weight: $font-weight-bold;
-        font-size: $font-size-h5;
-        padding-top: 20px;
-        text-align: right;
+    
+    .table-action{
+        padding: 0 3px;
     }
     
-   .td-actions .btn{
-        @include opacity(0.36);
-    
-        &.btn-xs{
-            padding-left: 3px;
-            padding-right: 3px;
-        }
-    }
-    
-    > tbody > tr{
-        position: relative;
+    .bootstrap-table{
         
-        &:hover{
-            .td-actions .btn{
-                @include opacity(1);
+       .table{
+           > thead > tr > th{
+               border-bottom-width: 1px;
+               font-size: 12px;
+               font-weight: $font-weight-bold;
+               text-transform: uppercase;
+           }  
+           
+           .radio,
+           .checkbox{
+               margin-top: 0;
+               margin-bottom: 0;
+               padding: 0;
+               width: 15px;
+           }
+           > tfoot > tr > th,
+           > thead > tr > td,
+           > tbody > tr > td,
+           > tfoot > tr > td{
+               padding: 12px 8px !important;
+               vertical-align: middle;
+           }
+        
+            
+            > tbody > tr{
+                position: relative;
+                
+                &:hover{
+                    .td-actions .btn{
+                        @include opacity(1);
+                    }
+                }
             }
-        }
+        } 
     }
-} 
+    
+    .pagination.pagination-no-border > li > a,
+    .pagination.pagination-no-border > li > span{
+        border: 0;
+    }
+    
+    .pagination > li > a, 
+    .pagination > li > span, 
+    .pagination > li:first-child > a, 
+    .pagination > li:first-child > span, 
+    .pagination > li:last-child > a, 
+    .pagination > li:last-child > span{
+        border-radius: 50%;
+        margin: 0 2px;
+        color: $default-states-color;
+    }
+    .pagination > li.active > a, 
+    .pagination > li.active > span, 
+    .pagination > li.active > a:hover, 
+    .pagination > li.active > span:hover, 
+    .pagination > li.active > a:focus, 
+    .pagination > li.active > span:focus {
+        background-color: $info-color;
+        border: 0;
+        color: #FFFFFF;
+        padding: 7px 13px;
+    }
+    
+    
+}

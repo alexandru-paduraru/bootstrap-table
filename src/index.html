@@ -15,6 +15,9 @@
      
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     
 </head>
@@ -24,13 +27,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="fresh-table">
+                <div class="fresh-table color-blue">
                     <div class="toolbar">
-                        <button id="button" class="btn btn-default">Append</button>
+                        <button id="fullScreen" class="btn btn-default">Full Screen</button>
                         
                     </div>
                     
-                    <table id="fresh-table">
+                    <table id="fresh-table" class="table table-striped">
                         <thead>
                             <th data-field="id">ID</th>
                         	<th data-field="name">Name</th>
@@ -108,7 +111,7 @@
                             	<td>9</td>
                             	<td>Illana Nelson</td>
                             	<td>$56,142</td>
-                            	<td>Heard Island and Mcdonald Islands</td>
+                            	<td>Heard Island</td>
                             	<td>Montone</td>
                             	<td>Dr.</td>
                             </tr>
@@ -857,16 +860,25 @@
     <script type="text/javascript">
         var i=100,
             $table = $('#fresh-table'),
-            $button = $('#button');
+            $fullScreenBtn = $('#fullScreen'),
+            full_screen = false;
             
         $().ready(function(){
             $table.bootstrapTable({
                 toolbar: ".toolbar",
                 
                 showRefresh: true,
+                search: true,
                 showToggle: true,
                 showColumns: true,
                 pagination: true,
+                
+                formatShowingRows: function(pageFrom, pageTo, totalRows){
+                    //do nothing here, we don't want to show the text  
+                },
+                formatRecordsPerPage: function(pageNumber){
+                    return pageNumber + " rows visible";
+                },
                 icons: {
                       refresh: 'fa fa-refresh',
                       toggle: 'fa fa-th-list',
@@ -878,9 +890,17 @@
         });
     
         $(function () {
-            $button.click(function () {
-                $table.bootstrapTable('append', randomData());
-                $table.bootstrapTable('scrollTo', 'bottom');
+            $fullScreenBtn.click(function () {
+                if(full_screen == true){
+                    full_screen = false;
+                    $(this).html("Full Screen").blur();
+                    $('.wrapper').removeClass("full-screen-table");                    
+                } else {
+                    full_screen = true;
+                    $(this).html("Compact").blur();
+                    $('.wrapper').addClass("full-screen-table");
+                    
+                }
             });
         });
     
@@ -903,13 +923,13 @@
 
         function operateFormatter(value, row, index) {
             return [
-                '<a class="like" href="javascript:void(0)" title="Like">',
+                '<a class="table-action like" href="javascript:void(0)" title="Like">',
                     '<i class="fa fa-heart"></i>',
                 '</a>',
-                '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+                '<a class="table-action edit ml10" href="javascript:void(0)" title="Edit">',
                     '<i class="fa fa-edit"></i>',
                 '</a>',
-                '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
+                '<a class="table-action remove ml10" href="javascript:void(0)" title="Remove">',
                     '<i class="fa fa-remove"></i>',
                 '</a>'
             ].join('');

@@ -13,17 +13,22 @@
 
 .form-control {
     background-color: $white-bg;
-    border: 1px solid $medium-gray;
-    border-radius: $border-radius-base;
-    color: #444444;
+    border: $border-thick solid $default-color;
+    border-radius: $btn-round-radius;
+    font-weight: $font-weight-bold;
+    
+    color: #666666;
     @include input-size($padding-base-vertical, $padding-base-horizontal, $height-base);
     @include box-shadow(none);
     
+    @include opacity(.7);
+    
     &:focus{
-           background-color: $white-bg;
-           border: 1px solid $dark-gray;
+           border-color: $dark-gray;
            @include box-shadow(none);
-           outline: 0 !important;       
+           @include opacity(1);
+           outline: 0 !important;   
+               
     }
     
     .has-success &,

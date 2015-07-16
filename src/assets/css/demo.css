@@ -4,7 +4,6 @@ body{
 
 .fresh-table{
     margin-top: 15%;
-    margin-bottom: 10%;
 }
 
 .full-screen-table .fresh-table{
@@ -13,7 +12,8 @@ body{
 .full-screen-table .col-md-offset-2{
     margin: 0;
 }
-.full-screen-table .fresh-table{
+.full-screen-table .fresh-table,
+.full-screen-table .fresh-table .fixed-table-toolbar{
     border-radius: 0;
 }
 .full-screen-table .container{

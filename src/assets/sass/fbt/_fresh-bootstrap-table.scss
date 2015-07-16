@@ -3,13 +3,30 @@
     border-radius: $border-radius-extreme;
     color: $black-font;
     
+    a{
+        color: $default-color;
+        
+        &:hover,
+        &:focus{
+            color: $default-states-color;
+        }
+    } 
+    
+    input[type="radio"], 
+    input[type="checkbox"]{
+        margin: 4px 5px 0 0;
+    }
+    
     .fixed-table-toolbar{
         border-radius: $border-radius-extreme $border-radius-extreme 0 0;
-        border-bottom: 1px solid $light-gray;
-        padding: 5px 10px;
+        padding: 10px 10px;
         color: $black-font;
         
-       .pull-right{
+        .dropdown-menu{
+            overflow: visible;
+        }
+        
+        .pull-right{
             .btn{
                 margin-right: 5px;
             }    
@@ -21,16 +38,64 @@
             }
         }
     
-        .columns label{
-            color: $black-color;    
+        .columns{
+            label{
+                padding: 4px 15px;
+                padding: 4px 15px;
+                color: #FFF;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            
+            ul > li:first-child{
+                label{
+                    padding-top: 10px;
+                }
+            }
+            
+            ul > li:last-child{
+                label{
+                    padding-bottom: 10px;
+                }
+            }
         }   
          
         &:after{
             display: table;
             content: "";
             clear: both;
+        }        
+    }
+    
+    &.toolbar-color-blue{
+        .fixed-table-toolbar{
+            @include card-radial-gradient ($icon-blue-color-top, $icon-blue-color-bottom); 
+        }     
+    }
+    
+    &.toolbar-color-azure{
+        .fixed-table-toolbar{
+            @include card-radial-gradient ($icon-azure-color-top, $icon-azure-color-bottom);    
         }
     }
+    
+    &.toolbar-color-green{
+        .fixed-table-toolbar{
+            @include card-radial-gradient ($icon-green-color-top, $icon-green-color-bottom);
+        }
+    }
+    &.toolbar-color-orange{
+        .fixed-table-toolbar{
+            @include card-radial-gradient ($icon-orange-color-top, $icon-orange-color-bottom);
+        }    
+    }
+    &.toolbar-color-red{
+        .fixed-table-toolbar{
+            @include card-radial-gradient ($icon-red-color-top, $icon-red-color-bottom); 
+        }
+    }
+
     
     .fixed-table-pagination{
         margin: 0 10px;
@@ -41,6 +106,11 @@
             content: "";
             clear: both;
         }
+        
+        .dropup .dropdown-menu{
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
     }
     
     .bootstrap-table .table tbody > tr > td:first-child,{
@@ -50,60 +120,82 @@
     .bootstrap-table .table thead > tr > th:first-child{
         padding-left: 10px !important;
     }
+    
     .table > thead > tr > th, 
     .table > tbody > tr > th, 
     .table > tfoot > tr > th{
         border-color: $light-gray;
     } 
-    .table > thead > tr > td, 
-    .table > tbody > tr > td, 
-    .table > tfoot > tr > td{
-        border: none;
-    };
     
-    &[class*="color-"]{
-        .fixed-table-toolbar{
-            background: none !important;
-            border-color: rgba(255,255,255,.15);
-            color: $white-color;
+    .table{
+        > thead > tr > td,
+        > tbody > tr >td,
+        > tfoot > tr >td{
+            border-color: rgba(220, 220, 220, 0.15);
         } 
-        .fixed-table-header,
-        .fixed-table-body{
-            color: $white-color;
+        
+        &.table-striped > thead > tr > td,
+        &.table-striped > tbody > tr >td,
+        &.table-striped > tfoot > tr >td{
+            border: none;
         }
         
-        a{
-            color: $light-white;
-            
-            &:hover,
-            &:focus{
-                color: $white-color;
-            }
-        }    
+    }
+    
+    .pagination.pagination-no-border > li > a,
+    .pagination.pagination-no-border > li > span{
+        border: 0;
+    }
+    
+    .pagination > li > a, 
+    .pagination > li > span, 
+    .pagination > li:first-child > a, 
+    .pagination > li:first-child > span, 
+    .pagination > li:last-child > a, 
+    .pagination > li:last-child > span{
+        border-radius: 20px;
+        margin: 0 2px;
+        background-color: transparent;
+        min-width: 36px;
+        height: 36px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 20px;
+        
+        border-width: 2px;
+        color: $default-color;
+        border-color: transparent;
+        
+        @include opacity(.7);
+        
+        &:hover{
+            color: $default-states-color;
+            border-color: $default-states-color;
+            @include opacity(1);
+        }
+    }
+    
+    .pagination > li.active > a, 
+    .pagination > li.active > span, 
+    .pagination > li.active > a:hover, 
+    .pagination > li.active > span:hover, 
+    .pagination > li.active > a:focus, 
+    .pagination > li.active > span:focus {
+        color: $default-states-color;
+        border-color: $default-color;
+        background-color: transparent;
+        @include opacity(1);
+    }
+    
+    &[class*="full-color-"],
+    &[class*="toolbar-color-"]{           
         .table-hover > tbody > tr:hover {
             background-color: rgba(255, 255, 255, .20);
         }
         
-        .btn{
-             @include btn-styles($light-white, $white-states-color);
-        }
-        
-        .table-striped > tbody > tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, .15);
-            
-            &:hover{
-                background-color: rgba(255,255,255,.25);
-            }
-        }
-        .table > thead > tr > th, 
-        .table > tbody > tr > th, 
-        .table > tfoot > tr > th{
-            border-color: rgba(255,255,255, .15);
-        } 
-        
-        .fixed-table-pagination{
-            .page-list{
-                color: $white-color;
+        .fixed-table-toolbar{
+            .btn{
+                @include btn-styles($light-white, $white-states-color);
             }
         }
         
@@ -128,10 +220,82 @@
             } 
             &:-ms-input-placeholder{
                @include placeholder($light-white,1);
-            }
-    
-                    
+            }        
         }
+        
+    }
+    
+    &[class*="full-color-"]{ 
+        .table td{
+            a{
+                color: $light-white;
+                
+                &:hover,
+                &:focus{
+                    color: $white-color;
+                }
+            } 
+        }
+        
+        .btn{
+            @include btn-styles($light-white, $white-states-color);
+        }        
+          
+        .fixed-table-toolbar{
+            background: none !important;
+            border-color: rgba(255,255,255,.15);
+            color: $white-color;
+        } 
+        .fixed-table-header,
+        .fixed-table-body{
+            color: $white-color;
+        }
+         
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, .15);
+            
+            &:hover{
+                background-color: rgba(255,255,255,.25);
+            }
+        }
+        
+        .table > thead > tr > th, 
+        .table > tbody > tr > th, 
+        .table > tfoot > tr > th{
+            border-color: rgba(255,255,255, .15);
+        } 
+        
+        .fixed-table-pagination{
+            .page-list{
+                color: $white-color;
+            }
+        }
+        
+        .pagination > li > a, 
+        .pagination > li > span, 
+        .pagination > li:first-child > a, 
+        .pagination > li:first-child > span, 
+        .pagination > li:last-child > a, 
+        .pagination > li:last-child > span{
+            color: $light-white;
+            
+            &:hover{
+                color: $white-color;
+                border-color: $light-white;
+                @include opacity(1);
+            }
+        }
+        
+        .pagination > li.active > a, 
+        .pagination > li.active > span, 
+        .pagination > li.active > a:hover, 
+        .pagination > li.active > span:hover, 
+        .pagination > li.active > a:focus, 
+        .pagination > li.active > span:focus {
+            color: $white-color;
+            border-color: $white-color;
+        }
+        
         
     }
     
@@ -151,21 +315,21 @@
         }
     }
     
-    &.color-blue{
+    &.full-color-blue{
         @include card-radial-gradient ($icon-blue-color-top, $icon-blue-color-bottom);         
     }
     
-    &.color-azure{
+    &.full-color-azure{
         @include card-radial-gradient ($icon-azure-color-top, $icon-azure-color-bottom);
     }
     
-    &.color-green{
+    &.full-color-green{
         @include card-radial-gradient ($icon-green-color-top, $icon-green-color-bottom);
     }
-    &.color-orange{
+    &.full-color-orange{
         @include card-radial-gradient ($icon-orange-color-top, $icon-orange-color-bottom);
     }
-    &.color-red{
+    &.full-color-red{
         @include card-radial-gradient ($icon-red-color-top, $icon-red-color-bottom);
     }
 
@@ -210,34 +374,6 @@
                 }
             }
         } 
-    }
-    
-    .pagination.pagination-no-border > li > a,
-    .pagination.pagination-no-border > li > span{
-        border: 0;
-    }
-    
-    .pagination > li > a, 
-    .pagination > li > span, 
-    .pagination > li:first-child > a, 
-    .pagination > li:first-child > span, 
-    .pagination > li:last-child > a, 
-    .pagination > li:last-child > span{
-        border-radius: 50%;
-        margin: 0 2px;
-        color: $default-states-color;
-    }
-    .pagination > li.active > a, 
-    .pagination > li.active > span, 
-    .pagination > li.active > a:hover, 
-    .pagination > li.active > span:hover, 
-    .pagination > li.active > a:focus, 
-    .pagination > li.active > span:focus {
-        background-color: $info-color;
-        border: 0;
-        color: #FFFFFF;
-        padding: 7px 13px;
-    }
-    
+    }    
     
 }

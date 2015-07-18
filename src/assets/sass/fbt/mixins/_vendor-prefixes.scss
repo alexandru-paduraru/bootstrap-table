@@ -71,7 +71,7 @@
     background: -o-radial-gradient(center, ellipse cover, $center-color 0%,$extern-color 100%); /* Opera 12+ */
     background: -ms-radial-gradient(center, ellipse cover, $center-color 0%,$extern-color 100%); /* IE10+ */
     background: radial-gradient(ellipse at center, $center-color 0%,$extern-color 100%); /* W3C */
-    background-size: 250%;
+    background-size: 250% 250%;
 }
 
 @mixin vertical-align {

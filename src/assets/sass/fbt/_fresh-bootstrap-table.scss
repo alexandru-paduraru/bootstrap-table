@@ -3,6 +3,10 @@
     border-radius: $border-radius-extreme;
     color: $black-font;
     
+    .btn{
+        border-radius: $btn-round-radius !important;
+    }
+    
     a{
         color: $default-color;
         
@@ -266,9 +270,9 @@
         } 
         
         .fixed-table-pagination{
-            .page-list{
+            
                 color: $white-color;
-            }
+            
         }
         
         .pagination > li > a, 
@@ -375,5 +379,9 @@
             }
         } 
     }    
+    
+    .fa{
+        min-width: 18px;
+    }
     
 }

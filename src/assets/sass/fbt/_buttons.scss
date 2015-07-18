@@ -2,7 +2,6 @@
     border-width: $border-thick;
     background-color: $transparent-bg;
     font-weight: $font-weight-bold;
-    border-radius: $btn-round-radius !important;
     
     @include opacity(.7);
     padding: $padding-base-vertical $padding-base-horizontal;
@@ -106,4 +105,33 @@
     top: 50%;
     margin-top: -1px;
     right: 8px;
+}
+
+.btn-social { 
+	//@include btn-styles($default-color, $default-states-color);
+	opacity: 0.85;
+	padding: 8px 9px;
+    
+    min-width: 100px;
+    margin: 20px 2px 0;
+    
+	.fa {
+		font-size: 18px;
+		vertical-align: middle;
+		display: inline-block;
+		margin-right: 5px;
+	}
+
+	&.btn-round {
+		padding: 9px 10px;
+	}
+
+}
+
+.btn-facebook {
+	@include social-buttons-color($social-facebook);
+}
+
+.btn-twitter {
+	@include social-buttons-color($social-twitter);
 }

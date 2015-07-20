@@ -1427,7 +1427,8 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   color: #FFFFFF;
 }
 .fresh-table[class*="full-color-"] .fixed-table-header,
-.fresh-table[class*="full-color-"] .fixed-table-body {
+.fresh-table[class*="full-color-"] .fixed-table-body,
+.fresh-table[class*="full-color-"] table {
   color: #FFFFFF;
 }
 .fresh-table[class*="full-color-"] .table-striped > tbody > tr:nth-of-type(odd) {
@@ -1603,5 +1604,3 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 .fresh-table .fa {
   min-width: 18px;
 }
-
-/*# sourceMappingURL=fresh-bootstrap-table.css.map */

@@ -36,9 +36,9 @@
                     <table id="fresh-table" class="table">
                         <thead>
                             <th data-field="id">ID</th>
-                        	<th data-field="name">Name</th>
-                        	<th data-field="salary">Salary</th>
-                        	<th data-field="country">Country</th>
+                        	<th data-field="name" data-sortable="true">Name</th>
+                        	<th data-field="salary" data-sortable="true">Salary</th>
+                        	<th data-field="country" data-sortable="true">Country</th>
                         	<th data-field="city">City</th>
                         	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                         </thead>
@@ -218,14 +218,13 @@
         $().ready(function(){
             $table.bootstrapTable({
                 toolbar: ".toolbar",
-
+    
                 showRefresh: true,
                 search: true,
                 showToggle: true,
                 showColumns: true,
                 pagination: true,
                 striped: true,
-                sortable: true,
                 pageSize: 8,
                 pageList: [8,10,25,50,100],
                 
@@ -243,15 +242,39 @@
                     detailClose: 'fa fa-minus-circle'
                 }
             });
-        });
+            
+                        
+            
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView');
+            });
     
-        $(function () {
+            
+            window.operateEvents = {
+                'click .like': function (e, value, row, index) {
+                    alert('You click like icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);
+                },
+                'click .edit': function (e, value, row, index) {
+                    alert('You click edit icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);    
+                },
+                'click .remove': function (e, value, row, index) {
+                    $table.bootstrapTable('remove', {
+                        field: 'id',
+                        values: [row.id]
+                    });
+            
+                }
+            };
+            
             $alertBtn.click(function () {
                 alert("You pressed on Alert");
             });
+            
         });
-        
-
+            
+    
         function operateFormatter(value, row, index) {
             return [
                 '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
@@ -266,19 +289,6 @@
             ].join('');
         }
     
-        window.operateEvents = {
-            'click .like': function (e, value, row, index) {
-                alert('You click like icon, row: ' + JSON.stringify(row));
-                console.log(value, row, index);
-            },
-            'click .edit': function (e, value, row, index) {
-                console.log(value, row, index);    
-            },
-            'click .remove': function (e, value, row, index) {
-                alert('You click remove icon, row: ' + JSON.stringify(row));
-                console.log(value, row, index);
-            }
-        };
-
-</script>
+            
+    </script>
 </html>

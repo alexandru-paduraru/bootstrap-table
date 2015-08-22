@@ -32,9 +32,9 @@
         <table id="fresh-table" class="table">
             <thead>
                 <th data-field="id">ID</th>
-            	<th data-field="name">Name</th>
-            	<th data-field="salary">Salary</th>
-            	<th data-field="country">Country</th>
+            	<th data-field="name" data-sortable="true">Name</th>
+            	<th data-field="salary" data-sortable="true">Salary</th>
+            	<th data-field="country" data-sortable="true">Country</th>
             	<th data-field="city">City</th>
             	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
@@ -891,12 +891,33 @@
                     detailClose: 'fa fa-minus-circle'
                 }
             });
-        });
-    
-        $(function () {
+            
+            window.operateEvents = {
+                'click .like': function (e, value, row, index) {
+                    alert('You click like icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);
+                },
+                'click .edit': function (e, value, row, index) {
+                    alert('You click edit icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);    
+                },
+                'click .remove': function (e, value, row, index) {
+                    $table.bootstrapTable('remove', {
+                        field: 'id',
+                        values: [row.id]
+                    });
+            
+                }
+            };
+            
             $alertBtn.click(function () {
                 alert("You pressed on Alert");
             });
+        
+            
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView');
+            });    
         });
         
 
@@ -913,20 +934,7 @@
                 '</a>'
             ].join('');
         }
-    
-        window.operateEvents = {
-            'click .like': function (e, value, row, index) {
-                alert('You click like icon, row: ' + JSON.stringify(row));
-                console.log(value, row, index);
-            },
-            'click .edit': function (e, value, row, index) {
-                console.log(value, row, index);    
-            },
-            'click .remove': function (e, value, row, index) {
-                alert('You click remove icon, row: ' + JSON.stringify(row));
-                console.log(value, row, index);
-            }
-        };        
+       
     </script>
 
 </html>
